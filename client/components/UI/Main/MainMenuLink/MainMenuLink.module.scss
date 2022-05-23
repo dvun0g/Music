@@ -3,6 +3,7 @@
 .Button {
     display: grid;
     grid-template-columns: 40px auto;
+    justify-content: start;
     align-items: center;
     gap: 10px;
 

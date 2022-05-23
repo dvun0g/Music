@@ -18,6 +18,7 @@ const MainMenu: FC = () => {
             </div>
             <div className={styles.BlockCircle}>
                 <MainMenuCircle color='v'/>
+                <MainMenuCircle color='w'/>
                 <MainMenuCircle color='a'/>
                 <MainMenuCircle color='r'/>
             </div>

@@ -4,7 +4,7 @@ const initialState: ThemeStateTypes = {
     color: 'w',
 }
 
-export const themeReducer = (state = initialState, action: ThemeAction): ThemeStateTypes {
+export const themeReducer = (state = initialState, action: ThemeAction): ThemeStateTypes => {
     switch(action.type) {
         case ThemeActionTypes.THEME_CHANGE:
             return {...state, color: action.payload}

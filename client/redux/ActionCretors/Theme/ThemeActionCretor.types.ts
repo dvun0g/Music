@@ -1,0 +1,1 @@
+export type colorType = 'w' | 'a' | 'v' | 'r'

@@ -1,10 +1,12 @@
 import { HYDRATE } from "next-redux-wrapper";
 import { AnyAction, combineReducers } from "redux";
 import { authReducer } from "./Auth/AuthReducer";
+import { themeReducer } from "./Theme/ThemeReducer";
 
 
 export const rootReducer = combineReducers({
     auth: authReducer,
+    theme: themeReducer,
     
 })
 
