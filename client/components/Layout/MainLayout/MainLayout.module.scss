@@ -1,0 +1,14 @@
+@import '../../../styles/variables.scss';
+
+.Container {
+    display: grid;
+    grid-template-areas: 'header header header'
+                         'menu body songs';
+    grid-template-rows: 150px 1fr;
+    grid-template-columns: 10% auto 30%;
+    
+    height: 100vh;
+    padding: 0 50px;
+
+    background: $bg;
+}

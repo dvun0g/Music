@@ -1,0 +1,23 @@
+@import '../../../../styles/variables.scss';
+
+.Button {
+    display: grid;
+    grid-template-columns: 40px auto;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 20px;
+    line-height: 18px;
+
+    transition: all 0.3s ease-in-out;
+}
+.Button:hover {
+    transform: scale(1.1);
+}
+.Black {
+    color: $color-black;
+}
+
+.Vinous {
+    color: $color-vinous;
+}

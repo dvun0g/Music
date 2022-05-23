@@ -1,0 +1,30 @@
+@import '../../../../styles/variables.scss';
+
+.Container {
+    display: grid;
+    gap: 5px;
+
+    width: 180px;
+    padding: 20px 20px 40px 20px;
+    
+    box-shadow: -2px 5px 13px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    background-color: $bg-color-white;
+
+    transition: all 0.3s ease-in-out;
+    .Title {
+        justify-self: start;
+        font-size: 30px;
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+    .Text {
+        text-align: start;
+        font-size: 15px;
+        line-height: 20px;
+    }
+}
+
+.Container:hover {
+    transform: scale(1.05);
+}

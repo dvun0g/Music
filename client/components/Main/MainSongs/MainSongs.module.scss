@@ -1,0 +1,16 @@
+.Container {
+    grid-area: songs;
+    display: grid;
+    gap: 18px;
+    
+    padding-bottom: 50px;
+    border-radius: 60px;
+    
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.Container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}

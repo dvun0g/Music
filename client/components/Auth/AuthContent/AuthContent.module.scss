@@ -1,0 +1,31 @@
+@import '../../../styles/variables.scss';
+
+.Container {
+    width: 450px;
+    padding: 30px;
+
+    background-color: $bg-color-white;
+    box-shadow: -2px 5px 13px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+
+    display: grid;
+    justify-items: center;
+
+    .Title {
+        font-size: 30px;
+        line-height: 35px;
+        margin-bottom: 20px;
+    }
+    .BlockTitle {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+    .BlockInput {
+        margin-bottom: 60px;
+        display: grid;
+        gap: 15px;
+    }
+}

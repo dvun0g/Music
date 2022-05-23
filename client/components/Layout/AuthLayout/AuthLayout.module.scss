@@ -1,0 +1,9 @@
+@import '../../../styles/variables.scss';
+
+.Container {
+    height: 100vh;
+    background: $bg;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}

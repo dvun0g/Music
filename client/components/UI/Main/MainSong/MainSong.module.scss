@@ -1,0 +1,55 @@
+@import '../../../../styles/variables.scss';
+
+.Container {
+    display: grid;
+    grid-template-columns: 50px auto;
+    gap: 10px;
+    align-items: center;
+
+    margin: 0 auto;
+    width: 80%;
+    max-height: 80px;
+    padding: 15px;
+
+    background-color: $bg-color-song;
+    border-radius: 20px;
+    box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.1);
+
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    .Image {
+        img {
+            border-radius: 100%;
+        }
+    }
+    .BlockText {
+        display: grid;
+        justify-content: start;
+        gap: 3px;
+        .Title {
+            color: $color-black;
+            font-size: 13px;
+            line-height: 15px;
+        }
+        .Author {
+            color: $color-author;
+            font-size: 10px;
+            line-height: 12px;
+        }
+    }
+}
+
+.Container:hover {
+    transform: scale(1.1);
+}
+
+.Active {
+    transform: scale(1.1);
+    background: #FAF9FE;
+    box-shadow: 0px 4px 5px 3px rgba(134, 126, 126, 0.25);
+    transition: all 0.3s ease-in-out;
+}
+
+.Active:hover {
+    transform: scale(1.2);
+}

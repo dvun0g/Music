@@ -1,0 +1,17 @@
+.Container {
+    grid-area: menu;
+    display: grid;
+    align-content: space-between;
+
+    .BlockLink {
+        display: grid;
+        justify-content: start;
+        gap: 20px 0;
+    }
+    .BlockCircle {
+        display: grid;
+        gap: 30px;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+}

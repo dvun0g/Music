@@ -1,0 +1,45 @@
+*, *:after, *:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font-family: 'MiSans-Bold', sans-serif;
+    font-weight: 700;
+}
+
+button {
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+a { 
+    text-decoration: none; 
+}
+a:hover { 
+    text-decoration: none; 
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+@font-face {
+    font-family: 'MiSans-Bold';
+    src: url('../assets/fonts/MiSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'MiSans-Regular';
+    src: url('../assets/fonts/MiSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'MiSans-Normal';
+    src: url('../assets/fonts/MiSans-Normal.ttf');
+}

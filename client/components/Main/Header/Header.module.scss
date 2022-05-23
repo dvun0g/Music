@@ -1,0 +1,42 @@
+@import '../../../styles/variables.scss';
+
+.Container {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
+    align-items: center;
+
+    .Logo {
+        font-size: 70px;
+        line-height: 75px;
+
+        transition: all 0.3s ease-in-out;
+    }
+    .Logo:hover {
+        transform: scale(1.03);
+        color: $color-orange;
+    }
+
+    .Account {
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        gap: 30px;
+        font-size: 30px;
+        line-height: 45px;
+
+
+        .Btn {
+            border-radius: 100%;
+            width: 70px;
+            height: 70px;
+            background-color: $bg-color-white;
+
+            transition: transform 0.5s ease-in-out;
+        }
+        .Btn:hover {
+            transform: scale(1.3) rotate(180deg);
+        }
+    }
+}
