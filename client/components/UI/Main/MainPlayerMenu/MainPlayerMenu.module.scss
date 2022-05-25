@@ -21,5 +21,9 @@
         grid-auto-flow: column;
         justify-content: center;
         gap: 30px;
+
+        .Pause {
+            padding: 0;
+        }
     }
 }

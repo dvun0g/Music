@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
 import { ThemeAction } from "../../reducers/Theme/ThemeReducer.types";
 
-import { ThemeActionTypes } from './../../reducers/Theme/ThemeReducer.types';
+import { ThemeActionTypes } from '../../reducers/Theme/ThemeReducer.types';
 import { colorType } from "./ThemeActionCretor.types";
 
 
