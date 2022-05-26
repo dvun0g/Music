@@ -14,10 +14,9 @@ export const audioSetVolume = (volume: number) => (dispatch: Dispatch) => {
     dispatch({type: AudioActionTypes.AUDIO_SET_VOLUME, payload: volume})
 }
 
-export const audioSetCurrentTime = (time: number) => (dispatch: Dispatch) => {
-    dispatch({type: AudioActionTypes.AUDIO_SET_CURRENT_TIME, paylaod: time})
+export const audioSetDuration = (duration: number) => (dispatch: Dispatch) => {
+    dispatch({type: AudioActionTypes.AUDIO_SET_DURATION, payload: duration})
 }
-
-export const audioSetActiveTrakc = (audio: string | null) => (dispatch: Dispatch) => {
-    dispatch({type: AudioActionTypes.AUDIO_ACTIVE_TRACK, payload: audio})
+export const audioSetCurrentTime = (time: number) => (dispatch: Dispatch) => {
+    dispatch({type: AudioActionTypes.AUDIO_SET_CURRENT_TIME, payload: time})
 }

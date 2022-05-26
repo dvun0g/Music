@@ -4,7 +4,8 @@ const initialState: AudioStateTypes = {
     play: false,
     activeTrack: null,
     duration: 0,
-    volume: 0,
+    currentTime: 0,
+    volume: 50,
 }
 
 export const audioReducer = (state= initialState, action: AudioAction): AudioStateTypes => {
@@ -13,12 +14,12 @@ export const audioReducer = (state= initialState, action: AudioAction): AudioSta
             return {...state, play: true}
         case AudioActionTypes.AUDIO_PAUSE:
             return {...state, play: false}
-        case AudioActionTypes.AUDIO_ACTIVE_TRACK:
-            return {...state, activeTrack: action.payload}
         case AudioActionTypes.AUDIO_SET_VOLUME:
             return {...state, volume: action.payload}
+        case AudioActionTypes.AUDIO_SET_DURATION:
+            return {...state, duration: action.payload}
         case AudioActionTypes.AUDIO_SET_CURRENT_TIME:
-            return {...state, volume: action.payload}
+            return {...state, currentTime: action.payload}
         default:
             return state
     }

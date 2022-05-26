@@ -1,5 +1,6 @@
 export interface AudioStateTypes {
     duration: number,
+    currentTime: number,
     volume: number,
     activeTrack: string | null,
     play: boolean,
@@ -9,8 +10,8 @@ export enum AudioActionTypes {
     AUDIO_PLAY = 'AUDIO_PLAY',
     AUDIO_PAUSE = 'AUDIO_PAUSE',
     AUDIO_SET_VOLUME = 'AUDIO_SET_VOLUME',
+    AUDIO_SET_DURATION = 'AUDIO_SET_DURATION',
     AUDIO_SET_CURRENT_TIME = 'AUDIO_SET_CURRENT_TIME',
-    AUDIO_ACTIVE_TRACK = 'AUDIO_ACTIVE_TRACK',
 }
 
 export interface AudioPlayAction {
@@ -26,18 +27,17 @@ export interface AudioSetVolumeAction {
     payload: number
 }
 
+export interface AudioSetDuration {
+    type: AudioActionTypes.AUDIO_SET_DURATION,
+    payload: number
+}
 export interface AudioSetCurrentTimeAction {
     type: AudioActionTypes.AUDIO_SET_CURRENT_TIME
     payload: number
-}
-
-export interface AudioActiveTrackAction {
-    type: AudioActionTypes.AUDIO_ACTIVE_TRACK
-    payload: string | null,
 }
 
 export type AudioAction = AudioPlayAction 
                           | AudioPauseAction 
                           | AudioSetCurrentTimeAction 
                           | AudioSetVolumeAction 
-                          | AudioActiveTrackAction
+                          | AudioSetDuration
