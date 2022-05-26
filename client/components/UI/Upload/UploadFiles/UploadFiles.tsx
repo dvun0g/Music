@@ -5,9 +5,13 @@ import { UploadFilesProps } from "./UploadFiles.types";
 
 import styles from './UploadFiles.module.scss';
 
-const UploadFiles: FC<UploadFilesProps> = ({text, type, className, ...props}) => {
+const UploadFiles: FC<UploadFilesProps> = ({text, 
+                                            type, 
+                                            className,
+                                            uploadFiles,
+                                            file,
+                                            ...props}) => {
     const [drag, setDrag] = useState<boolean>(false)
-    const [file, setFile] = useState()
 
     // event : DragEvent<HTMLDivElement> - не работает надо понять почему
     const handlerStartDrag = (e: any) => {
@@ -23,8 +27,9 @@ const UploadFiles: FC<UploadFilesProps> = ({text, type, className, ...props}) =>
     const handlerDrop = (e: any) => {
         e.preventDefault()
         setDrag(false)
-        setFile(e.dataTransfer.files)
+        uploadFiles(e.dataTransfer.files[0])
     }
+
     return (
         <div 
          className={cn(className, styles.Container)} 

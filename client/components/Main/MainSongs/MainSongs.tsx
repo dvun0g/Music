@@ -6,12 +6,28 @@ import MainSong from "../../UI/Main/MainSong/MainSong";
 import styles from './MainSongs.module.scss';
 
 const MainSongs: FC = () => {
-    const {songs, error, loading} = useTypedSelector(state => state.song)
+    const {songs, error, loading, wishlist} = useTypedSelector(state => state.song)
 
     return (
         <div className={styles.Container}>
-            {songs && songs.map(song => (
-                <MainSong key={song._id} _id={song._id} title={song.name} author={song.author} img={song.image} song={song.audio}/>
+            {songs && !wishlist.length  ? songs.map(song => (
+                <MainSong 
+                 key={song._id} 
+                 _id={song._id} 
+                 title={song.name} 
+                 author={song.author} 
+                 img={song.image} 
+                 song={song.audio}
+                 wishlist={song.wishlist}/>
+            )) : wishlist.map(song => (
+                <MainSong 
+                 key={song._id} 
+                 _id={song._id} 
+                 title={song.name} 
+                 author={song.author} 
+                 img={song.image} 
+                 song={song.audio}
+                 wishlist={song.wishlist}/>
             ))}
         </div>
     )

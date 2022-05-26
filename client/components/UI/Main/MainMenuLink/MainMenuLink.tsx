@@ -12,9 +12,14 @@ const MainMenuLink: FC<MainMenuLinkProps> = ({color='b' ,text, icon, href, class
         <button 
          className={className}
          {...props}>
-            <Link href={href}>
-                <a className={(cn(styles.Button, {[styles.Black]: color === 'b', [styles.Vinous]: color === 'v'}))}>
-                    <Image src={icon} width={30} height={30}/>
+            <Link href={href} shallow={true}>
+                <a className={(cn(styles.Button, {
+                    [styles.Black]: color === 'b', [styles.Red]: color === 'r'
+                    }))}>
+                    <Image 
+                     src={icon} 
+                     width={30} 
+                     height={30} />
                     <div>{text}</div>
                 </a>
             </Link> 

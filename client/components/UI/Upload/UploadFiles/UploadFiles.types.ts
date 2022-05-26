@@ -5,4 +5,6 @@ export interface UploadFilesProps extends DetailedHTMLProps<HTMLAttributes<HTMLD
     className?: string,
     text: string,
     type: 'i' | 'a',
+    file: File | '',
+    uploadFiles: Function,
 }

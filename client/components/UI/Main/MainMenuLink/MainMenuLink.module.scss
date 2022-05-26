@@ -11,6 +11,7 @@
     line-height: 18px;
 
     transition: all 0.3s ease-in-out;
+
 }
 .Button:hover {
     transform: scale(1.1);
@@ -19,6 +20,9 @@
     color: $color-black;
 }
 
-.Vinous {
-    color: $color-vinous;
+.Red {
+    color: $color-red;
+    img {
+        filter: invert(36%) sepia(29%) saturate(4134%) hue-rotate(338deg) brightness(101%) contrast(85%);   
+    }
 }

@@ -4,6 +4,7 @@ const initialState: SongStateTypes = {
     loading: false,
     error: null,
     songs: [],
+    wishlist: [],
     activeSong: null,
 }
 
@@ -18,6 +19,8 @@ export const songReducer = (state = initialState, action: SongAction): SongState
             return {...state, loading: false, error: action.payload}
         case SongActionTypes.SONG_SET_ACTIVE:
             return {...state, activeSong: action.payload}
+        case SongActionTypes.SONG_SET_WISHLIST:
+            return {...state, wishlist: action.payload}
         default:
             return state
     }

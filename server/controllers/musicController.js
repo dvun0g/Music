@@ -3,7 +3,7 @@ import MusicService from "../service/musicService.js"
 class MusicController {
     async create (req, res) {
         try {
-            const createdMusic = await MusicService.create(req.body, req.files.music, req.files.image)
+            const createdMusic = await MusicService.create(req.body, req.files.audio, req.files.image)
             res.json(createdMusic)
         } catch (e) {
             res.status(400).json({message: `Error Music Create - ${e}`})
@@ -30,7 +30,7 @@ class MusicController {
 
     async update (req, res) {
         try {
-            const updatedMusic = await MusicService.update(req.parama.id, req.body)
+            const updatedMusic = await MusicService.update(req.params.id, req.body)
             res.json(updatedMusic)
         } catch (e) {
             res.status(400).json({message: `Error Music Update - ${e}`})

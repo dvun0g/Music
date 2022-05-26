@@ -1,6 +1,7 @@
 .Container {
     grid-area: songs;
     display: grid;
+    align-content: flex-start;
     gap: 18px;
     
     padding-bottom: 50px;

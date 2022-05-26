@@ -2,7 +2,7 @@
 
 .Container {
     display: grid;
-    grid-template-columns: 50px auto;
+    grid-template-columns: 50px auto 40px;
     gap: 10px;
     align-items: center;
 
@@ -17,6 +17,22 @@
 
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+
+    .Heart {
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+            filter: invert(36%) sepia(29%) saturate(4134%) hue-rotate(338deg) brightness(101%) contrast(85%);
+        }
+    }
+    .Wishlist {
+        filter: invert(36%) sepia(29%) saturate(4134%) hue-rotate(338deg) brightness(101%) contrast(85%);        
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    
     .Image {
         img {
             border-radius: 100%;

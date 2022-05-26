@@ -5,6 +5,7 @@ const MusicModel = new mongoose.Schema({
     author: {type: String, required: true},
     name: {type: String, required: true},
     image: {type: String, requied: true},
+    wishlist: {type: Boolean, default: false}
 })
 
 export default mongoose.model('Music', MusicModel)
