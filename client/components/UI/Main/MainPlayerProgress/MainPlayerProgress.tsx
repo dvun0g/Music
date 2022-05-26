@@ -9,18 +9,25 @@ import styles from './MainPlayerProgress.module.scss';
 const MainPlayerProgress: FC<MainPlayerProgressProps> = ({left, 
                                                           rigth, 
                                                           className, 
-                                                          image, 
+                                                          image01,
+                                                          image02, 
                                                           onChange, 
                                                           value, 
                                                           ...props}) => {   
     return (
-        <div className={cn(className, styles.Container)} {...props}>
-            <div className={styles.Image}>
-                <Image 
-                 src={image} 
-                 width={20} 
-                 height={20}/>            
-            </div>
+        <div 
+         className={cn(className, styles.Container, {
+             [styles.Volume]: image01 && image02
+         })} 
+         {...props}>
+            {image01 
+                    ? <div className={styles.Image}>
+                        <Image 
+                        src={image01} 
+                        width={15} 
+                        height={15}/>            
+                    </div>
+                    : null}
             <input 
              type="range"
              min={0}
@@ -28,10 +35,20 @@ const MainPlayerProgress: FC<MainPlayerProgressProps> = ({left,
              className={styles.Input}
              onChange={onChange}
              value={value}/>
-            <div className={styles.Block}>
-                <div>{left}</div>
-                <div>{rigth}</div>
-            </div>
+            {image02 
+                    ? <div className={styles.Image}>
+                        <Image 
+                        src={image02} 
+                        width={15} 
+                        height={15}/>            
+                    </div>
+                    : null}
+            {!image01 && !image02
+                                 ? <div className={styles.Block}>
+                                       <div>{left}</div>
+                                       <div>{rigth}</div>
+                                   </div>
+                                : null}
         </div>
     )
 }

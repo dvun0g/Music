@@ -6,13 +6,12 @@ import { useActions } from "../../../hooks/useActions";
 
 import Header from "../../Header/Header";
 import MainMenu from "../../Main/MainMenu/MainMenu";
-import MainSongs from "../../Main/MainSongs/MainSongs";
 
-import { MainLayoutProps } from "./MainLayout.types";
+import { UploadLayoutProps } from "./UploadLayout.types";
 
-import styles from './MainLayout.module.scss';
+import styles from './UploadLayout.module.scss';
 
-const MainLayout: FC<MainLayoutProps> = ({children}) => {
+const UploadLayout: FC<UploadLayoutProps> = ({children}) => {
     const {color} = useTypedSelector(state => state.theme)
     const {themeChange} = useActions()
 
@@ -25,7 +24,7 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
             themeChange(themeColor)
         }
     }, [])
-    
+
     return (
         <div className={cn(styles.Container, {
             [styles.White]: color === 'w',
@@ -35,10 +34,9 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
         })}>
             <Header />
             <MainMenu />
-            {children}
-            <MainSongs />
+            {children}        
         </div>
     )
 }
 
-export default MainLayout;
+export default UploadLayout;

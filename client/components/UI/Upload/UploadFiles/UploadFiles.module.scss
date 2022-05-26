@@ -1,0 +1,35 @@
+.Container {
+    display: grid;
+    grid-template-rows: 20px auto;
+    gap: 20px;
+    width: 380px;
+    height: 380px;
+    .Title {
+        text-align: center;
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    .Block {
+        width: 100%;
+        height: 100%;
+
+        display: grid;
+        justify-content: center;
+        align-items: center;
+
+        background-color: #fff;
+        border-radius: 50px;
+
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        .Good {
+            font-size: 40px;
+            line-height: 45px;
+        }
+    }
+    .Block:hover {
+        transform: scale(1.05);
+    }
+}

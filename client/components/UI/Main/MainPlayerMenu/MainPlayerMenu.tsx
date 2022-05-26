@@ -15,20 +15,32 @@ import previous from '../../../../assets/img/Main/previous.svg';
 import next from '../../../../assets/img/Main/next.svg';
 import playImg from '../../../../assets/img/Main/play.svg';
 import pauseImg from '../../../../assets/img/Main/pause.svg';
-import volumeImg from '../../../../assets/img/Main/volume.svg';
+import volumeDown from '../../../../assets/img/Main/volumeDown.svg';
+import volumeUp from '../../../../assets/img/Main/volumeUp.svg';
 
 let audio: HTMLAudioElement
 
 const MainPlayerMenu: FC<MainPlayerMenuProps> = ({className, ...props}) => {
 
-    const {activeSong} = useTypedSelector(state => state.song)
+    const {activeSong, songs} = useTypedSelector(state => state.song)
     const {play, volume, duration, currentTime} = useTypedSelector(state => state.audio)    
     
-    const {audioPlay, audioPause, audioSetVolume, audioSetDuration, audioSetCurrentTime} = useActions()
+    const {audioPlay, 
+           audioPause, 
+           audioSetVolume, 
+           audioSetDuration, 
+           audioSetCurrentTime,
+           songSetNext} = useActions()
 
     useEffect(() => {
         audio ? setAudio() : audio = new Audio()
     }, [activeSong])
+
+    useEffect(() => {
+        if (duration === currentTime) {
+            activeSong ? songSetNext(songs, activeSong, 'n') : null
+        }
+    }, [duration, currentTime])
 
     const setAudio = () => {
         if (activeSong) {
@@ -69,32 +81,44 @@ const MainPlayerMenu: FC<MainPlayerMenuProps> = ({className, ...props}) => {
         audio.currentTime = +e.currentTarget.value
     }
 
+    const handleNextSong = (type: 'n' | 'p') => {
+        if (activeSong) {
+            songSetNext(songs, activeSong, type)
+        }
+    }
+
     return (
         <div 
          className={cn(className, styles.Container)}
          {...props}>
-                <MainPlayerProgress 
-                    left={currentTime} 
-                    rigth={duration} 
-                    image={volumeImg} 
-                    onChange={handleCurrentTime} 
-                    value={currentTime}/>
                 <div className={styles.BlockButton}>
-                    <MainPlayerItem img={previous}/>
+                    <MainPlayerItem 
+                     img={previous} 
+                     position='l'
+                     onClick={() => handleNextSong('p')}/>
                     <MainPlayerItem 
                      img={!play ? playImg : pauseImg} 
                      size='m' 
                      color='o'
                      onClick={handlePlay}
                      className={play ? styles.Pause: ''}/>
-                    <MainPlayerItem img={next}/>
+                    <MainPlayerItem 
+                     img={next} 
+                     position='r'
+                     onClick={() => handleNextSong('n')}/>
                 </div>
                 <MainPlayerProgress 
                     left={volume} 
                     rigth={100} 
-                    image={volumeImg} 
+                    image01={volumeDown} 
+                    image02={volumeUp}
                     onChange={handleVolume} 
                     value={volume}/>
+                <MainPlayerProgress 
+                    left={currentTime} 
+                    rigth={duration} 
+                    onChange={handleCurrentTime} 
+                    value={currentTime}/>
         </div>
     )
 }

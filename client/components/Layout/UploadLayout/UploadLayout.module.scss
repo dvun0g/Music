@@ -1,0 +1,25 @@
+@import '../../../styles/variables.scss';
+
+.Container {
+    display: grid;
+    grid-template-areas: 'header header'
+                         'menu body';
+    grid-template-rows: 150px 1fr;
+    grid-template-columns: 10% auto;
+
+    height: 100vh;
+    padding: 0 50px;
+}
+
+.White {
+    background: $bg;
+}
+.Azure {
+    background: $bg-azure;
+}
+.Red {
+    background: $bg-red;
+}
+.Vinous {
+    background: $bg-vinous;
+}

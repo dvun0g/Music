@@ -6,5 +6,6 @@ import { colorType } from "./ThemeActionCretor.types";
 
 
 export const themeChange = (color: colorType) => (dispacth: Dispatch<ThemeAction>) => {
+    localStorage.setItem('theme', color)
     dispacth({type: ThemeActionTypes.THEME_CHANGE, payload: color})
 }

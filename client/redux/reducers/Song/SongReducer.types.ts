@@ -1,4 +1,4 @@
-interface ISong {
+export interface ISong {
     _id: string,
     audio: string,
     image: string,

@@ -5,4 +5,5 @@ export interface MainPlayerItemProps extends DetailedHTMLProps<HTMLAttributes<HT
     size?: 's' | 'm',
     className?: string,
     color?: 'w' | 'o',
+    position?: 'l' | 'r' | 'c',
 }
