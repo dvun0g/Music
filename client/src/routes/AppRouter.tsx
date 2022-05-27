@@ -13,21 +13,23 @@ const AppRouter: FC = () => {
     const {authCheck} = useActions()
     const {isAuth} = useTypedSelector(state => state.auth)
 
-    // const accessToken = localStorage.getItem('accessToken') 
+    const accessToken = localStorage.getItem('accessToken') 
+
     useEffect(() => {
-        if (localStorage.getItem('accessToken')) {
+        if (accessToken) {
             authCheck()
         }
-    }, [])
+    }, [isAuth])
+
     return (
         <Routes>
             {
-                isAuth
+                accessToken
                      ? <>
-                            <Route path='/' element={<Main />}/>
+                            <Route path='*' element={<Main />}/>
                             <Route path='upload' element={<UploadPage />}/>
                        </>
-                     : <Route path='/' element={<Auth />}/>  
+                     : <Route path='*' element={<Auth />}/>  
             } 
         </Routes>
     )

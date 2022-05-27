@@ -1,5 +1,5 @@
 export interface ThemeStateTypes {
-    color: 'w' | 'a' | 'r' | 'v' | null;
+    color: 'w' | 'a' | 'r' | 'v';
 }
 
 export enum ThemeActionTypes {

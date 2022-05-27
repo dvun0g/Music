@@ -50,13 +50,13 @@ class AuthService {
 
     async refresh(refreshToken) {
         if (!refreshToken) {
-            throw new Error('Произошла ошибка при обновление токена - пользователь не авторизирован')
+            throw new Error('Произошла ошибка при обновление токена - нет токена')
         }
         const userData = TokenService.validRefreshToken(refreshToken)
         const tokenDB = await TokenService.findToken(refreshToken)
 
         if (!userData || !tokenDB) {
-            throw new Error('Произошла ошибка при обновление токена - пользователь не авторизирован')
+            throw new Error('Произошла ошибка при обновление токена - нет пользователя или токена в бд')
         }  
 
         const user = await UserModel.findById(userData._id)
