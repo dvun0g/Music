@@ -16,6 +16,7 @@ class AuthController {
         try {
             const {email, password} = req.body
             const userData = await AuthService.login(email, password)
+            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
             res.json(userData)
         } catch (e) {
             res.status(400).json({message: `Произошла ошибка при логине - ${e}`})
@@ -37,8 +38,10 @@ class AuthController {
         try {
             const {refreshToken} = req.cookies
             const userData = await AuthService.refresh(refreshToken)
+            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
             res.json(userData)
         } catch (e) {
+            console.log(e)
             res.status(400).json({message: `Произошла ошибка при обновление токена - ${e}`})
         }
     }

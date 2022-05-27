@@ -12,7 +12,7 @@ class AuthService {
         const hashPassword = bcrypt.hashSync(password, 7)
         const user = await UserModel.create({name, email, password: hashPassword})
         
-        const {_id} = user
+        const _id = String(user._id)
         const tokens = TokenService.createTokens({_id, name, email})
         await TokenService.saveToken(user._id, tokens.refreshToken)
 
@@ -32,12 +32,13 @@ class AuthService {
         if (!validPassword) {
             throw new Error('Ошибка при логине - неправильный пароль')
         }
-        const {_id, name} = {...user}
-        
-        const tokens = TokenService.createTokens({_id, email, name})
+        const _id = String(user._id)
+        const name = user.name
+
+        const tokens = TokenService.createTokens({_id, name, email})
         await TokenService.saveToken(_id, tokens.refreshToken)
         return {
-            tokens,
+            ...tokens,
             user: user,
         }
     }
@@ -56,14 +57,15 @@ class AuthService {
 
         if (!userData || !tokenDB) {
             throw new Error('Произошла ошибка при обновление токена - пользователь не авторизирован')
-        }
+        }  
 
         const user = await UserModel.findById(userData._id)
-        const {name, email, _id} = user
+        const {name, email} = user
+        const _id = String(user._id)
         const tokens = TokenService.createTokens({name, email, _id})
         await TokenService.saveToken(_id, tokens.refreshToken)
         return {
-            tokens,
+            ...tokens,
             user: user,
         }
     }

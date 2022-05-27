@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 
-import { AudioActionTypes } from './../../reducers/Audio/AudioReducer.types';
+import { AudioActionTypes } from '../../reducers/Audio/AudioReducer.types';
 
 export const audioPlay = () => (dispatch: Dispatch) => {
     dispatch({type:  AudioActionTypes.AUDIO_PLAY})

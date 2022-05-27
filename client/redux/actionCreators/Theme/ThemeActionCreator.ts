@@ -2,7 +2,7 @@ import { Dispatch } from "react";
 import { ThemeAction } from "../../reducers/Theme/ThemeReducer.types";
 
 import { ThemeActionTypes } from '../../reducers/Theme/ThemeReducer.types';
-import { colorType } from "./ThemeActionCretor.types";
+import { colorType } from "./ThemeActionCreator.types";
 
 
 export const themeChange = (color: colorType) => (dispacth: Dispatch<ThemeAction>) => {

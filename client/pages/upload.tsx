@@ -1,4 +1,6 @@
-import { NextPage } from "next";
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
+
+import { wrapper } from "../redux";
 
 import UploadLayout from "../components/Layout/UploadLayout/UploadLayout";
 
@@ -13,3 +15,16 @@ const UploadPage: NextPage = () => {
 }
 
 export default UploadPage;
+
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(store => async (context: GetServerSidePropsContext) => {
+    const refreshToken = context.req.headers.cookie
+    if (!refreshToken) {
+        return {
+            redirect: {destination: '/auth', permanent: false},
+            props: []
+        }
+    }
+    return {
+        props: []
+    }
+})

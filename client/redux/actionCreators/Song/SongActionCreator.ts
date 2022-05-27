@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 import axios, { AxiosResponse } from 'axios';
 
-import { ISong, SongActionTypes } from './../../reducers/Song/SongReducer.types';
+import { ISong, SongActionTypes } from '../../reducers/Song/SongReducer.types';
 
 
 export const songFetch = () => async (dispatch: Dispatch) => {
