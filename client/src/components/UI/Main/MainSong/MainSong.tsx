@@ -1,6 +1,5 @@
 import { FC } from "react";
 import cn from 'classnames';
-import Image from "next/image";
 
 import { useActions } from "../../../../hooks/useActions";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
@@ -47,7 +46,7 @@ const MainSong: FC<MainSongProps> = ({_id,
          onClick={handlePlay}
          {...props}>
              <div className={styles.Image}>
-                 <Image 
+                 <img
                   src={`http://localhost:8000/img/${img}`} 
                   width={50} 
                   height={50} />
@@ -56,7 +55,7 @@ const MainSong: FC<MainSongProps> = ({_id,
                 <div className={styles.Title}>{title}</div>
                 <div className={styles.Author}>{author}</div>
              </div>
-             <Image
+             <img
               className={cn(styles.Heart, {
                 [styles.Wishlist]: wishlist})}
               onClick={handlerUpdate} 

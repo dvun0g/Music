@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 import { FC } from "react";
 import cn from 'classnames';
+import { Link } from "react-router-dom";
+
 
 import { MainMenuLinkProps } from "./MainMenuLink.types";
 
@@ -12,16 +12,16 @@ const MainMenuLink: FC<MainMenuLinkProps> = ({color='b' ,text, icon, href, class
         <button 
          className={className}
          {...props}>
-            <Link href={href} shallow={true}>
-                <a className={(cn(styles.Button, {
-                    [styles.Black]: color === 'b', [styles.Red]: color === 'r'
-                    }))}>
-                    <Image 
+            <Link 
+             to={href} 
+             className={(cn(styles.Button, {
+                 [styles.Black]: color === 'b', 
+                 [styles.Red]: color === 'r'}))}>
+                    <img 
                      src={icon} 
                      width={30} 
                      height={30} />
                     <div>{text}</div>
-                </a>
             </Link> 
         </button>
     )

@@ -1,8 +1,6 @@
-import { ChangeEvent, FC, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { ChangeEvent, FC, useState } from "react";
 
 import { useActions } from "../../../hooks/useActions";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 import AuthTitle from '../../UI/Auth/AuthTitle/AuthTitle';
 import AuthButton from "../../UI/Auth/AuthButton/AuthButton";
@@ -14,16 +12,7 @@ import { UserLoginType } from "../../../redux/actionCreators/Auth/AuthActionCrea
 import styles from './AuthContent.module.scss';
 
 const AuthContent: FC = () => {
-    const {isAuth} = useTypedSelector(state => state.auth)
     const {authRegistration, authLogin} = useActions()
-
-    const router = useRouter()
-    
-    useEffect(() => {
-        if (isAuth) {
-            router.push('/')
-        }
-    }, [isAuth])
 
     const [login, setLogin] = useState<boolean>(true)
     

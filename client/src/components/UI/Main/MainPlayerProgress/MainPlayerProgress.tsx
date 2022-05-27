@@ -1,6 +1,5 @@
 import { FC } from "react";
 import cn from 'classnames';
-import Image from "next/image";
 
 import { MainPlayerProgressProps } from "./MainPlayerProgress.types";
 
@@ -22,7 +21,7 @@ const MainPlayerProgress: FC<MainPlayerProgressProps> = ({left,
          {...props}>
             {image01 
                     ? <div className={styles.Image}>
-                        <Image 
+                        <img 
                         src={image01} 
                         width={15} 
                         height={15}/>            
@@ -37,7 +36,7 @@ const MainPlayerProgress: FC<MainPlayerProgressProps> = ({left,
              value={value}/>
             {image02 
                     ? <div className={styles.Image}>
-                        <Image 
+                        <img 
                         src={image02} 
                         width={15} 
                         height={15}/>            

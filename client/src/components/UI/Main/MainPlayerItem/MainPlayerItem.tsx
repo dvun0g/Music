@@ -4,7 +4,6 @@ import cn from 'classnames';
 import { MainPlayerItemProps } from "./MainPlayerItem.types";
 
 import styles from './MainPlayerItem.module.scss';
-import Image from "next/image";
 
 const MainPlayerItem: FC<MainPlayerItemProps> = ({color='w', 
                                                   size='s', 
@@ -22,7 +21,7 @@ const MainPlayerItem: FC<MainPlayerItemProps> = ({color='w',
             [styles.Right]: position === 'r',
             [styles.Left]: position === 'l',
         })} {...props}>
-            <Image src={img} width={size == 's' ? 20 : 30} height={size == 's' ? 20 : 30}/> 
+            <img src={img} width={size === 's' ? 20 : 30} height={size === 's' ? 20 : 30}/> 
         </button>
     )
 }
