@@ -26,6 +26,12 @@
     .BlockInput {
         margin-bottom: 60px;
         display: grid;
-        gap: 15px;
+        gap: 10px;
+
+        .Error {
+            color: rgb(237, 77, 77);
+            font-size: 15px;
+            text-align: center;
+        }
     }
 }

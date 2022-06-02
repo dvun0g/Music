@@ -1,6 +1,8 @@
-import { ChangeEvent, FC, useState } from "react";
+import { FC, useState } from "react";
 
 import { useActions } from "../../../hooks/useActions";
+import useInput from "../../../hooks/useInput";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 import AuthTitle from '../../UI/Auth/AuthTitle/AuthTitle';
 import AuthButton from "../../UI/Auth/AuthButton/AuthButton";
@@ -13,39 +15,49 @@ import styles from './AuthContent.module.scss';
 
 const AuthContent: FC = () => {
     const {authRegistration, authLogin} = useActions()
+    const {isAuth, loading} = useTypedSelector(state => state.auth)
 
     const [login, setLogin] = useState<boolean>(true)
+    const [correctLogin, setCorrectLogin] = useState<boolean>(true)
+    const [correctRegistration, setCorrectRegistration] = useState<boolean>(true)
     
-    const [userRegistration, setUserRegistration] = useState<IUser>({name: '', email: '', password: ''})
-    const [userLogin, setUserLogin] = useState<UserLoginType>({email: '', password: ''})
+    const nameRegistration = useInput('', {isEmpty: true, minLength: 3})
+    const emailRegistration = useInput('', {isEmpty: true, minLength: 5, isEmail: true})
+    const passwordRegistration = useInput('', {isEmpty: true, minLength: 5})
 
-    const hanlderLoginEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        setUserLogin({...userLogin, email: e.target.value})
-    }
-    const hanlderLoginPassword = (e: ChangeEvent<HTMLInputElement>) => {
-        setUserLogin({...userLogin, password: e.target.value})
-    }
-
-    const handlerRegistrationName = (e: ChangeEvent<HTMLInputElement>) => {
-        setUserRegistration({...userRegistration, name: e.target.value})
-    }
-    const handlerRegistrationEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        setUserRegistration({...userRegistration, email: e.target.value})
-    }
-    const handlerRegistrationPassword = (e: ChangeEvent<HTMLInputElement>) => {
-        setUserRegistration({...userRegistration, password: e.target.value})
-    }
-    // const handlerRegistrationName = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setUserRegistration({...userRegistration, name: e.target.value})
-    // }
+    const emailLogin = useInput('', {isEmpty: true, minLength: 5, isEmail: true})
+    const passwordLogin = useInput('', {isEmpty: true, minLength: 5})
 
     const handlerButtonRegistration = () => {
+        const userRegistration: IUser = {
+            name: nameRegistration.value,
+            email: emailRegistration.value,
+            password: passwordRegistration.value,
+        }
         authRegistration(userRegistration)
-        setUserRegistration({name: '', email: '', password: ''})
+
+        if (isAuth) {
+            nameRegistration.setValue('')
+            emailRegistration.setValue('')
+            passwordRegistration.setValue('')
+        } else {
+            setCorrectRegistration(false)
+        }
     }
+
     const handlerButtonLogin = () => {
+        const userLogin: UserLoginType = {
+            email: emailLogin.value,
+            password: passwordLogin.value,
+        }
         authLogin(userLogin)
-        setUserLogin({email: '', password: ''})
+        
+        if (isAuth) {
+            emailLogin.setValue('')
+            passwordLogin.setValue('')
+        } else {
+            setCorrectLogin(false)
+        }
     }
 
     return (
@@ -65,39 +77,82 @@ const AuthContent: FC = () => {
                 {
                     login 
                     ? <>
+                        {emailLogin.isDirty && emailLogin.isEmpty 
+                                            && <div className={styles.Error}>The field cannot be empty</div>}
+                        {emailLogin.isDirty && emailLogin.minLengthError
+                                            && <div className={styles.Error}>The minimum field length is 5</div>}
+                        {emailLogin.isDirty && emailLogin.isEmail
+                                            && <div className={styles.Error}>Incorrect email</div>}
+                       
                         <AuthInput 
                          placeholder="Введите вашу почту" 
                          type="text"
-                         value={userLogin.email}
-                         onChange={hanlderLoginEmail}/>
+                         value={emailLogin.value}
+                         onChange={emailLogin.onChange}
+                         onBlur={emailLogin.onBlur}/>
+
+                        {passwordLogin.isDirty && passwordLogin.isEmpty 
+                                               && <div className={styles.Error}>The field cannot be empty</div>}
+                        {passwordLogin.isDirty && passwordLogin.minLengthError
+                                               && <div className={styles.Error}>The minimum field length is 5</div>}
+                        
                         <AuthInput 
                          placeholder="Введите пароль 🤫" 
                          type="password"
-                         value={userLogin.password}
-                         onChange={hanlderLoginPassword}/>
+                         value={passwordLogin.value}
+                         onChange={passwordLogin.onChange}
+                         onBlur={passwordLogin.onBlur}/>
+
+                        {!correctLogin && !loading && <div className={styles.Error}>Login error</div> }
                       </>
                     : <>
+                        {nameRegistration.isDirty && nameRegistration.isEmpty 
+                                                  && <div className={styles.Error}>The field cannot be empty</div>}
+                        {nameRegistration.isDirty && nameRegistration.minLengthError
+                                                  && <div className={styles.Error}>The minimum field length is 3</div>}
+                       
                         <AuthInput 
                          placeholder="Введите ваш никнейм" 
                          type="text"
-                         value={userRegistration.name}
-                         onChange={handlerRegistrationName}/>
+                         value={nameRegistration.value}
+                         onBlur={nameRegistration.onBlur}
+                         onChange={nameRegistration.onChange}/>
+                       
+                        {emailRegistration.isDirty && emailRegistration.isEmpty 
+                                                   && <div className={styles.Error}>The field cannot be empty</div>}
+                        {emailRegistration.isDirty && emailRegistration.minLengthError
+                                                   && <div className={styles.Error}>The minimum field length is 5</div>}
+                        {emailRegistration.isDirty && emailRegistration.isEmail
+                                                   && <div className={styles.Error}>Incorrect email</div>}
+                         
                         <AuthInput 
                          placeholder="Введите вашу почту" 
                          type="text"
-                         value={userRegistration.email}
-                         onChange={handlerRegistrationEmail}/>
+                         value={emailRegistration.value}
+                         onBlur={emailRegistration.onBlur}
+                         onChange={emailRegistration.onChange}/>
+                        
+                        {passwordRegistration.isDirty && passwordRegistration.isEmpty 
+                                                      && <div className={styles.Error}>The field cannot be empty</div>}
+                        {passwordRegistration.isDirty && passwordRegistration.minLengthError
+                                                      && <div className={styles.Error}>The minimum field length is 5</div>}
+                        
                         <AuthInput 
                          placeholder="Придумайте пароль 🤫" 
                          type="password"
-                         value={userRegistration.password}
-                         onChange={handlerRegistrationPassword}/>
-                        {/* <AuthInput placeholder="Подтверждение пароля" type="password"/> */}
+                         value={passwordRegistration.value}
+                         onBlur={passwordRegistration.onBlur}
+                         onChange={passwordRegistration.onChange}/>
+                         
+                        {!correctRegistration && !loading && <div className={styles.Error}>Registration error</div> }
                       </>
                 }
             </div>
             <AuthButton 
-             text={login ? 'Login' : 'Registration'}
+             disabled={login 
+                    ? !emailLogin.isValidInput || !passwordLogin.isValidInput 
+                    : !nameRegistration.isValidInput || !emailRegistration.isValidInput || !passwordRegistration.isValidInput}
+             text={login ? 'Login' : 'Registration'} 
              onClick={login ? handlerButtonLogin : handlerButtonRegistration} />
         </div>
     )
