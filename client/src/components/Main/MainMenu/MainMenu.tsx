@@ -2,19 +2,21 @@ import { FC } from "react";
 
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useActions } from "../../../hooks/useActions";
+import { useNavigate } from "react-router-dom";
 
 import MainMenuLink from "../../UI/Main/MainMenuLink/MainMenuLink";
 
 import styles from './MainMenu.module.scss';
 
-import songs from '../../../assets/img/Main/music.svg';
 import heart from '../../../assets/img/Main/heart.svg';
 import upload from '../../../assets/img/Main/upload.svg';
 import MainMenuCircle from "../../UI/Main/MainMenuCircle/MainMenuCircle";
 
 const MainMenu: FC = () => {
     const {wishlist} = useTypedSelector(state => state.song)
-    const {songAddWishlist, songDelWishlist} = useActions()
+    const {songAddWishlist, songDelWishlist, songRemoveActive} = useActions()
+    
+    const navigate = useNavigate()
 
     const handlerWishlist = () => {
         if (wishlist.length) {
@@ -24,13 +26,13 @@ const MainMenu: FC = () => {
         }
     }
 
+    const handlerUpload = () => {
+        new Promise((resolve, reject) => resolve(songRemoveActive())).then(() => navigate('/upload'))
+    }
+    
     return (
         <div className={styles.Container}>
             <div className={styles.BlockLink}>
-                <MainMenuLink 
-                 icon={songs} 
-                 text="Songs" 
-                 href="/songs"/>
                 <MainMenuLink 
                  icon={heart} 
                  text="Wishlist"
@@ -40,7 +42,8 @@ const MainMenu: FC = () => {
                 <MainMenuLink 
                  icon={upload} 
                  text="Upload" 
-                 href="/upload"/>
+                 href="/"
+                 onClick={handlerUpload}/>
             </div>
             <div className={styles.BlockCircle}>
                 <MainMenuCircle color='v'/>

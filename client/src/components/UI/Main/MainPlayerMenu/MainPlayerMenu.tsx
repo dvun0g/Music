@@ -38,7 +38,7 @@ const MainPlayerMenu: FC<MainPlayerMenuProps> = ({className, ...props}) => {
 
     useEffect(() => {
         if (duration === currentTime) {
-            activeSong ? songSetNext(songs, activeSong, 'n') : null
+            activeSong && songSetNext(songs, activeSong, 'n')
         }
     }, [duration, currentTime])
 
@@ -58,9 +58,11 @@ const MainPlayerMenu: FC<MainPlayerMenuProps> = ({className, ...props}) => {
             } 
             audio.play()
             audioPlay()          
+        } else {
+            audio.src = ''
         }
-    }
-
+    } 
+    
     const handlePlay = () => {
         if (play) {
             audio.pause()

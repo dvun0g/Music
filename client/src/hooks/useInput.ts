@@ -27,6 +27,7 @@ const useInput = (initialState: string, validations: ValidationsType) => {
         onChange,
         onBlur,
         isDirty,
+        setDirty,
         ...valid,
     }
 }

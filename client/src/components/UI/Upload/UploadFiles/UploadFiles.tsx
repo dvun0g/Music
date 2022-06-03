@@ -11,6 +11,7 @@ const UploadFiles: FC<UploadFilesProps> = ({text,
                                             uploadFiles,
                                             file,
                                             ...props}) => {
+    
     const [drag, setDrag] = useState<boolean>(false)
 
     // event : DragEvent<HTMLDivElement> - не работает надо понять почему

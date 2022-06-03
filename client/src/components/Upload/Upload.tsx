@@ -1,6 +1,8 @@
 import { ChangeEvent, FC, useState } from "react";
+import cn from 'classnames';
 
 import { useActions } from "../../hooks/useActions";
+import useInput from "../../hooks/useInput";
 
 import UploadFiles from "../UI/Upload/UploadFiles/UploadFiles";
 import UploadInput from "../UI/Upload/UploadInput/UploadInput";
@@ -13,14 +15,19 @@ const Upload: FC = () => {
     const {songCreate} = useActions()
     const [song, setSong] = useState<CreateSongType>({name: '', author: '', audio: '', image: ''})
 
-    const handlerAuthor = (e: ChangeEvent<HTMLInputElement>) => {
-        setSong({...song, author: e.target.value})
-    }
+    const nameInput = useInput('', {isEmpty: true})
+    const authorInput = useInput('', {isEmpty: true})
 
     const handlerName = (e: ChangeEvent<HTMLInputElement>) => {
-        setSong({...song, name: e.target.value})
+        nameInput.onChange(e)
+        setSong({...song, name: nameInput.value})
     }
-    
+
+    const handlerAuthor = (e: ChangeEvent<HTMLInputElement>) => {
+        authorInput.onChange(e)
+        setSong({...song, author: authorInput.value})
+    }
+
     const handlerAudio = (fileAudio: File) => {
         setSong({...song, audio: fileAudio})
     }
@@ -29,14 +36,22 @@ const Upload: FC = () => {
         setSong({...song, image: fileImage})
     }
 
+    const buttonDisabled = !nameInput.isValidInput || !authorInput.isValidInput || !song.audio || !song.image
+
     const handlerCreateSong = () => {
         const createSong = new FormData()
-        createSong.append('name', song.name)
-        createSong.append('author', song.author)
-        createSong.append('audio', song.audio)
-        createSong.append('image', song.image)
-        setSong({name: '', author: '', audio: '', image: ''})
+        createSong.set('name', nameInput.value)
+        createSong.set('author', authorInput.value)
+        createSong.set('audio', song.audio)
+        createSong.set('image', song.image)
+
         songCreate(createSong)
+
+        nameInput.setValue('')
+        nameInput.setDirty(false)
+        authorInput.setValue('')
+        authorInput.setDirty(false)
+        setSong({name: '', author: '', audio: '', image: ''})
     }
 
     return (
@@ -60,17 +75,31 @@ const Upload: FC = () => {
                  uploadFiles={handlerAudio}/>
             </div>
             <div className={styles.BlockInput}>
+                {authorInput.isDirty && authorInput.isEmpty
+                                   && <div className={styles.Error}>The field cannot be empty</div>}
+                
                 <UploadInput 
                  placeholder="Author"
-                 value={song.author}
+                 value={authorInput.value}
                  onChange={handlerAuthor}
+                 onBlur={authorInput.onBlur}
                  />
+                
+                {nameInput.isDirty && nameInput.isEmpty
+                                     && <div className={styles.Error}>The field cannot be empty</div>}
+                
                 <UploadInput 
                  placeholder="Name Song"
-                 value={song.name}
-                 onChange={handlerName}/>
+                 value={nameInput.value}
+                 onChange={handlerName}
+                 onBlur={nameInput.onBlur}
+                 />
                 <button 
-                 className={styles.Btn}
+                 className={cn(styles.Btn, {
+                     [styles.Disabled]: buttonDisabled,
+                     [styles.Active]: !(buttonDisabled),
+                 })}
+                 disabled={buttonDisabled}
                  onClick={handlerCreateSong}>
                     Upload Song
                 </button>

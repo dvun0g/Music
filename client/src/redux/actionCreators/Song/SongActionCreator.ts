@@ -24,6 +24,10 @@ export const songSetActive = (id: string) => async (dispatch: Dispatch) => {
     }
 } 
 
+export const songRemoveActive = () => (dispatch: Dispatch) => {
+    dispatch({type: SongActionTypes.SONG_SET_ACTIVE, payload: null})
+}
+
 export const songSetNext = (songs: ISong[], activeSong: ISong, type: 'n' | 'p') => (dispatch: Dispatch) => {
     const length = songs.length
     const index = songs.findIndex(song => song._id === activeSong._id)

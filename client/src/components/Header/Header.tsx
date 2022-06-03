@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
 
 import { useActions } from "../../hooks/useActions";
@@ -8,7 +8,12 @@ import styles from './Header.module.scss';
 
 const Header: FC = () => {
     const {user} = useTypedSelector(state => state.auth)
-    const {authLogout} = useActions()
+    const {authLogout, songRemoveActive} = useActions()
+
+    const handleLogout = () => {
+        songRemoveActive()
+        authLogout()
+    }
 
     return (
         <div className={styles.Container}>
@@ -16,7 +21,7 @@ const Header: FC = () => {
             <div className={styles.Account}>
                 <button className={styles.Btn}>👾</button>
                 <div>{user.name}</div>
-                <button onClick={authLogout} className={styles.Logout}>Logout</button>
+                <button onClick={handleLogout} className={styles.Logout}>Logout</button>
             </div>
         </div>
     )

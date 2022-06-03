@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .Container {
     grid-area: body;
     display: grid;
@@ -7,11 +9,14 @@
     margin: 0px 40px 50px 40px;
 
     .BlockTitle {
+        width: 100%;
         grid-column: 1 / 4;
-
-        .Title {
-            font-size: 57px;
-            line-height: 75px;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        justify-content: center;
+        img {
+            margin: 0 25px;
+            width: 230px;
         }
     }
 }
