@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import cn from 'classnames';
 
 import { MainCollectionProps } from "./MainCollection.types";
@@ -20,4 +20,4 @@ const MainCollection: FC<MainCollectionProps> = ({title, tags, className, ...pro
     )
 }
 
-export default MainCollection;
+export default memo(MainCollection);

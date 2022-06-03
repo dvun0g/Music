@@ -1,14 +1,16 @@
-import { FC } from "react";
+import { FC, lazy, Suspense } from "react";
 
 import UploadLayout from "../components/Layout/UploadLayout/UploadLayout";
 
-import Upload from "../components/Upload/Upload";
 
+const Upload = lazy(() => import ('../components/Upload/Upload'))
 
 const UploadPage: FC = () => {
     return (
         <UploadLayout>
-            <Upload />
+            <Suspense>
+                <Upload />
+            </Suspense>
         </UploadLayout>
     )
 }

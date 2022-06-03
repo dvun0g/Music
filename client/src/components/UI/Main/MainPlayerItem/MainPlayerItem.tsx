@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import cn from 'classnames';
 
 import { MainPlayerItemProps } from "./MainPlayerItem.types";
@@ -26,4 +26,4 @@ const MainPlayerItem: FC<MainPlayerItemProps> = ({color='w',
     )
 }
 
-export default MainPlayerItem;
+export default memo(MainPlayerItem);

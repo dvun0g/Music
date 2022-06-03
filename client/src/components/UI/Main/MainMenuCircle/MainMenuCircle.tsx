@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import cn from 'classnames';
 
 import { useActions } from "../../../../hooks/useActions";
@@ -26,4 +26,4 @@ const MainMenuCircle: FC<MainMenuCircleProps> = ({color, className, ...props}) =
     )
 }
 
-export default MainMenuCircle;
+export default memo(MainMenuCircle);

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import cn from 'classnames';
 import { Link } from "react-router-dom";
 
@@ -27,4 +27,4 @@ const MainMenuLink: FC<MainMenuLinkProps> = ({color='b' ,text, icon, href, class
     )
 }
 
-export default MainMenuLink;
+export default memo(MainMenuLink);

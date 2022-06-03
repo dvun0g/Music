@@ -1,13 +1,15 @@
-import { FC } from "react";
+import { FC, lazy, Suspense } from "react";
 
 import AuthLayout from "../components/Layout/AuthLayout/AuthLayout";
 
-import AuthContent from "../components/Auth/AuthContent/AuthContent";
+const AuthContent = lazy(() => import("../components/Auth/AuthContent/AuthContent"))
 
 const Auth: FC = () => {
     return (
         <AuthLayout>
-            <AuthContent/>
+            <Suspense>
+                <AuthContent/>
+            </Suspense>
         </AuthLayout>
     )
 }
