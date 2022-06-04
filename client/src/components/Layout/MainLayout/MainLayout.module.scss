@@ -5,8 +5,7 @@
     grid-template-areas: 'header header header'
                          'menu body songs';
     grid-template-rows: 150px 1fr;
-    grid-template-columns: 10% auto 30%;
-    
+    grid-template-columns: 13% auto 30%;
     height: 100vh;
     padding: 0 50px;
 }
@@ -22,4 +21,37 @@
 }
 .Vinous {
     background: $bg-vinous;
+}
+
+@media (max-width: 1198.98px) {
+    .Container {
+        grid-template-columns: 1fr 3fr 2fr;
+    }
+}
+
+@media (max-width: 1009.98px) {
+    .Container {
+        grid-template-areas: 'header header header'
+                             'menu songs songs'
+                             'menu body body';
+        grid-template-rows: 2fr 5fr 3fr;
+        grid-template-columns: 1fr 5fr;
+        align-content: space-between;
+
+    }
+}
+
+@media (max-width: 767.98px) {
+    .Container {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .Container {
+        grid-template-areas: 'header'
+                             'songs'
+                             'body';
+        grid-template-columns: 1fr;
+    }
 }

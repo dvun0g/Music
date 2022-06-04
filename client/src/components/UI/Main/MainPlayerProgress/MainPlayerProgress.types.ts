@@ -7,5 +7,6 @@ export interface MainPlayerProgressProps extends DetailedHTMLProps<HTMLAttribute
     image02?: string,
     onChange: ChangeEventHandler<HTMLInputElement>,
     value: number,
-    className?: string
+    disabled: boolean,
+    className?: string,
 }

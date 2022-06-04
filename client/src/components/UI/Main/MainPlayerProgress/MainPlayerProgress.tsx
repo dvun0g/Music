@@ -10,6 +10,7 @@ const MainPlayerProgress: FC<MainPlayerProgressProps> = ({left,
                                                           className, 
                                                           image01,
                                                           image02, 
+                                                          disabled,
                                                           onChange, 
                                                           value, 
                                                           ...props}) => {   
@@ -31,6 +32,7 @@ const MainPlayerProgress: FC<MainPlayerProgressProps> = ({left,
              type="range"
              min={0}
              max={rigth} 
+             disabled={disabled}
              className={styles.Input}
              onChange={onChange}
              value={value}/>

@@ -23,7 +23,7 @@ const MainSong: FC<MainSongProps> = ({_id,
     const {songSetActive, songUpdate} = useActions()
     
     const handlePlay = () => {
-        _id ? songSetActive(_id) : null
+        _id && songSetActive(_id)
     }
 
     const handlerUpdate = () => {
@@ -47,9 +47,7 @@ const MainSong: FC<MainSongProps> = ({_id,
          {...props}>
              <div className={styles.Image}>
                  <img
-                  src={`http://localhost:8000/img/${img}`} 
-                  width={50} 
-                  height={50} />
+                  src={`http://localhost:8000/img/${img}`} />
             </div>
              <div className={styles.BlockText}>
                 <div className={styles.Title}>{title}</div>
@@ -59,9 +57,7 @@ const MainSong: FC<MainSongProps> = ({_id,
               className={cn(styles.Heart, {
                 [styles.Wishlist]: wishlist})}
               onClick={handlerUpdate} 
-              src={heartImg} 
-              width={20} 
-              height={20}/>
+              src={heartImg} />
         </div>
     )
 }

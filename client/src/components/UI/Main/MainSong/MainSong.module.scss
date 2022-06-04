@@ -2,7 +2,8 @@
 
 .Container {
     display: grid;
-    grid-template-columns: 50px auto 40px;
+    grid-template-columns: 1fr 3fr 1fr;
+    justify-content: space-between;
     gap: 10px;
     align-items: center;
 
@@ -19,6 +20,11 @@
     transition: all 0.3s ease-in-out;
 
     .Heart {
+        width: 20px;
+        height: 20px;
+
+        justify-self: center;
+        
         transition: all 0.3s ease-in-out;
         &:hover {
             transform: scale(1.1);
@@ -36,6 +42,8 @@
     .Image {
         img {
             border-radius: 100%;
+            width: 50px;
+            height: 50px;
         }
     }
     .BlockText {
@@ -68,4 +76,44 @@
 
 .Active:hover {
     transform: scale(1.2);
+}
+
+
+@media (max-width: 1009.98px) {
+    .Container {
+        grid-template-columns: 60px 1fr 50px;
+        .BlockText {
+            .Author {
+                font-size: 18px;
+                line-height: 20px;
+            }
+            .Title {
+                font-size: 20px;
+                line-height: 22px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    .Container {
+        grid-template-columns: 40px 1fr 30px;
+        .Image {
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }  
+        .BlockText {
+            .Author {
+                font-size: 12px;
+                line-height: 14px;
+            }
+            .Title {
+                font-size: 14px;
+                line-height: 17px;
+            }
+        }
+    }
 }

@@ -14,7 +14,7 @@ const MainMenuCircle: FC<MainMenuCircleProps> = ({color, className, ...props}) =
     }
     return (
         <button 
-         className={cn(className, styles.Button, {
+         className={cn(className, styles.Container, {
              [styles.White]: color === 'w',
              [styles.Vinous]: color === 'v',
              [styles.Red]: color === 'r',

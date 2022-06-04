@@ -1,0 +1,54 @@
+@import '../../../../styles/variables.scss';
+
+.Container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+
+    width: 100vw;
+    height: 100vh;
+
+    visibility: hidden;
+    background-color: #eae9f9a5;
+
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    .Content {
+        width: 500px;
+        height: 250px;
+        
+        background-color: #fff;
+        border-radius: 50px;
+        
+        display: grid;
+        justify-content: center;
+        align-content: center;
+
+        cursor: auto;
+        .Title {
+            text-align: center;
+            font-size: 30px;
+            color: $color-azure;
+
+            .Btn {
+                font-size: 50px;
+
+                transition: transform 1s ease-in-out;
+
+                &:hover {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+    }
+}
+
+.Active {
+    visibility: visible;
+}

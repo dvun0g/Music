@@ -1,20 +1,23 @@
 import { FC } from "react";
+import cn from 'classnames';
 
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useActions } from "../../../hooks/useActions";
 import { useNavigate } from "react-router-dom";
 
 import MainMenuLink from "../../UI/Main/MainMenuLink/MainMenuLink";
+import MainMenuCircle from "../../UI/Main/MainMenuCircle/MainMenuCircle";
 
 import styles from './MainMenu.module.scss';
 
 import heart from '../../../assets/img/Main/heart.svg';
 import upload from '../../../assets/img/Main/upload.svg';
-import MainMenuCircle from "../../UI/Main/MainMenuCircle/MainMenuCircle";
+import close from '../../../assets/img/Main/close.svg';
 
 const MainMenu: FC = () => {
     const {wishlist} = useTypedSelector(state => state.song)
-    const {songAddWishlist, songDelWishlist, songRemoveActive} = useActions()
+    const {activeMenu} = useTypedSelector(state => state.theme)
+    const {songAddWishlist, songDelWishlist, songRemoveActive, activeMenuChange} = useActions()
     
     const navigate = useNavigate()
 
@@ -29,9 +32,19 @@ const MainMenu: FC = () => {
     const handlerUpload = () => {
         new Promise((resolve, reject) => resolve(songRemoveActive())).then(() => navigate('/upload'))
     }
+
+    const handleActiveMenu = () => {
+        activeMenuChange(false)
+    }
     
     return (
-        <div className={styles.Container}>
+        <div className={cn(styles.Container, {
+            [styles.Active]: activeMenu})}>
+            <img 
+             className={styles.Close}
+             onClick={handleActiveMenu}
+             src={close} 
+             alt="" />
             <div className={styles.BlockLink}>
                 <MainMenuLink 
                  icon={heart} 

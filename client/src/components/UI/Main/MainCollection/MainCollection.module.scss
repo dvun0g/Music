@@ -4,7 +4,7 @@
     display: grid;
     gap: 5px;
 
-    width: 85%;
+    width: 100%;
     padding: 20px 20px 40px 20px;
     
     box-shadow: -2px 5px 13px 2px rgba(0, 0, 0, 0.25);
@@ -27,4 +27,19 @@
 
 .Container:hover {
     transform: scale(1.05);
+}
+
+@media (max-width: 1399.98px) {
+    .Container {
+
+        .Title {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .Container {
+        display: none;
+    }
 }

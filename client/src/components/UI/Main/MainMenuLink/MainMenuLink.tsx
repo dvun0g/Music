@@ -14,7 +14,7 @@ const MainMenuLink: FC<MainMenuLinkProps> = ({color='b' ,text, icon, href, class
          {...props}>
             <Link 
              to={href} 
-             className={(cn(styles.Button, {
+             className={(cn(styles.Container, {
                  [styles.Black]: color === 'b', 
                  [styles.Red]: color === 'r'}))}>
                     <img 

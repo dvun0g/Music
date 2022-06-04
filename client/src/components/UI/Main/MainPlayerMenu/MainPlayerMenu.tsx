@@ -91,22 +91,27 @@ const MainPlayerMenu: FC<MainPlayerMenuProps> = ({className, ...props}) => {
 
     return (
         <div 
-         className={cn(className, styles.Container)}
+         className={cn(className, styles.Container, {
+             [styles.Disabled]: !activeSong,
+         })}
          {...props}>
                 <div className={styles.BlockButton}>
                     <MainPlayerItem 
                      img={previous} 
                      position='l'
+                     disabled={!activeSong ? true : false}
                      onClick={() => handleNextSong('p')}/>
                     <MainPlayerItem 
+                     className={play ? styles.Pause: ''}
                      img={!play ? playImg : pauseImg} 
                      size='m' 
                      color='o'
-                     onClick={handlePlay}
-                     className={play ? styles.Pause: ''}/>
+                     disabled={!activeSong ? true : false}
+                     onClick={handlePlay}/>
                     <MainPlayerItem 
                      img={next} 
                      position='r'
+                     disabled={!activeSong ? true : false}
                      onClick={() => handleNextSong('n')}/>
                 </div>
                 <MainPlayerProgress 
@@ -114,11 +119,13 @@ const MainPlayerMenu: FC<MainPlayerMenuProps> = ({className, ...props}) => {
                     rigth={100} 
                     image01={volumeDown} 
                     image02={volumeUp}
+                    disabled={!activeSong ? true : false}
                     onChange={handleVolume} 
                     value={volume}/>
                 <MainPlayerProgress 
                     left={currentTime} 
                     rigth={duration} 
+                    disabled={!activeSong ? true : false}
                     onChange={handleCurrentTime} 
                     value={currentTime}/>
         </div>

@@ -1,29 +1,35 @@
-import { FC } from "react";
-// import { Link } from "react-router-dom";
+import { FC, useState } from "react";
 
 import MainCollection from "../../UI/Main/MainCollection/MainCollection";
+import MainModalError from "../../UI/Main/MainModalError/MainModalError";
 
 import MainPlayerMenu from "../../UI/Main/MainPlayerMenu/MainPlayerMenu";
+import MainTitleBlock from "../MainTitleBlock/MainTitleBlock";
 
 import styles from './MainPlayer.module.scss';
 
-// import github from '../../../assets/img/Main/github.svg'
-// import telegram from '../../../assets/img/Main/telegram.svg'
-
 const MainPlayer: FC = () => {
+    const [modal, setModal] = useState<boolean>(false)
+
+    const handlerModal = () => {
+        setModal(true)
+    }
+
     return (
         <div className={styles.Container}>
-            <div className={styles.BlockTitle}>
-                    {/* <Link to=''>
-                        <img src={github} />
-                    </Link>
-                    <Link to=''>
-                        <img src={telegram} />
-                    </Link> */}
-            </div>
+            <MainTitleBlock />
             <MainPlayerMenu />
-            <MainCollection title='01' tags={['Classical', 'Music','Collection']}/>
-            <MainCollection title='01' tags={['Classical', 'Music','Collection']}/>
+            <MainCollection
+             onClick={handlerModal} 
+             title='01' 
+             tags={['Classical', 'Music','Collection']}/>
+            <MainCollection
+             onClick={handlerModal} 
+             title='01' 
+             tags={['Classical', 'Music','Collection']}/>
+            <MainModalError 
+             active={modal} 
+             setActive={setModal}/>
         </div>
     )
 }

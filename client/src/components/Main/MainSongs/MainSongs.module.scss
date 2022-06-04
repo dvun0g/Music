@@ -6,12 +6,31 @@
     
     padding-bottom: 50px;
     border-radius: 60px;
-    
-    overflow: auto;
+    overflow-x: visible;
+    overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 .Container::-webkit-scrollbar {
     width: 0;
     height: 0;
+}
+
+@media (max-width: 1199.98px) {
+    .Container {
+        border-radius: 40px;
+        min-width: 240px;
+    }
+}
+
+@media (max-width: 1009.98px) {
+    .Container {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .Container {
+        margin-bottom: 15px;
+    }
 }

@@ -1,9 +1,11 @@
 export interface ThemeStateTypes {
-    color: 'w' | 'a' | 'r' | 'v';
+    color: 'w' | 'a' | 'r' | 'v',
+    activeMenu: boolean,
 }
 
 export enum ThemeActionTypes {
     THEME_CHANGE = 'THEME_CHANGE',
+    CHANGE_ACTIVE_MENU = 'CHANGE_ACTIVE_MENU',
 }
 
 export interface ThemeChangeAction {
@@ -11,4 +13,10 @@ export interface ThemeChangeAction {
     payload: 'w' | 'a' | 'r' | 'v'
 }
 
-export type ThemeAction = ThemeChangeAction
+export interface ChnageActiveMenu {
+    type: ThemeActionTypes.CHANGE_ACTIVE_MENU,
+    payload: boolean,
+}
+
+export type ThemeAction = ThemeChangeAction 
+                          | ChnageActiveMenu
