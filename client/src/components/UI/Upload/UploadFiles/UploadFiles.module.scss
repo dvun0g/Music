@@ -2,8 +2,10 @@
     display: grid;
     grid-template-rows: 20px auto;
     gap: 20px;
-    width: 380px;
-    height: 380px;
+    
+    width: 340px;
+    height: 340px;
+    
     .Title {
         text-align: center;
         font-size: 20px;
@@ -31,5 +33,26 @@
     }
     .Block:hover {
         transform: scale(1.05);
+    }
+}
+
+@media (max-width: 1399.98px) {
+    .Container {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .Container {
+        width: 230px;
+        height: 230px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .Container {
+        width: 250px;
+        height: 250px;
     }
 }
