@@ -6,7 +6,7 @@ import MainSong from "../../UI/Main/MainSong/MainSong";
 import styles from './MainSongs.module.scss';
 
 const MainSongs: FC = () => {
-    const {songs, error, loading, wishlist} = useTypedSelector(state => state.song)
+    const {songs, wishlist} = useTypedSelector(state => state.song)
 
     return (
         <div className={styles.Container}>

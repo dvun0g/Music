@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { DragEvent, FC, useState } from "react";
 import cn from 'classnames';
 
 import { UploadFilesProps } from "./UploadFiles.types";
@@ -14,18 +14,17 @@ const UploadFiles: FC<UploadFilesProps> = ({text,
     
     const [drag, setDrag] = useState<boolean>(false)
 
-    // event : DragEvent<HTMLDivElement> - не работает надо понять почему
-    const handlerStartDrag = (e: any) => {
+    const handlerStartDrag = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setDrag(true)
     }
 
-    const handlerLeaveDrag = (e: any) => {
+    const handlerLeaveDrag = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setDrag(false)
     }
 
-    const handlerDrop = (e: any) => {
+    const handlerDrop = (e: DragEvent<HTMLDivElement>) => {
         e.preventDefault()
         setDrag(false)
         uploadFiles(e.dataTransfer.files[0])

@@ -13,7 +13,10 @@ import styles from './Upload.module.scss';
 
 const Upload: FC = () => {
     const {songCreate} = useActions()
-    const [song, setSong] = useState<CreateSongType>({name: '', author: '', audio: '', image: ''})
+    const [song, setSong] = useState<CreateSongType>({name: '', 
+                                                      author: '', 
+                                                      audio: '', 
+                                                      image: ''})
 
     const nameInput = useInput('', {isEmpty: true})
     const authorInput = useInput('', {isEmpty: true})
@@ -36,7 +39,10 @@ const Upload: FC = () => {
         setSong({...song, image: fileImage})
     }
 
-    const buttonDisabled = !nameInput.isValidInput || !authorInput.isValidInput || !song.audio || !song.image
+    const buttonDisabled = !nameInput.isValidInput 
+                           || !authorInput.isValidInput 
+                           || !song.audio 
+                           || !song.image
 
     const handlerCreateSong = () => {
         const createSong = new FormData()

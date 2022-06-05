@@ -23,9 +23,10 @@ const MainPlayerProgress: FC<MainPlayerProgressProps> = ({left,
             {image01 
                     ? <div className={styles.Image}>
                         <img 
-                        src={image01} 
-                        width={15} 
-                        height={15}/>            
+                         src={image01} 
+                         width={15} 
+                         height={15}
+                         alt="Volume Icon"/>            
                     </div>
                     : null}
             <input 
@@ -39,9 +40,10 @@ const MainPlayerProgress: FC<MainPlayerProgressProps> = ({left,
             {image02 
                     ? <div className={styles.Image}>
                         <img 
-                        src={image02} 
-                        width={15} 
-                        height={15}/>            
+                         src={image02} 
+                         width={15} 
+                         height={15}
+                         alt="Volume Icon"/>            
                     </div>
                     : null}
             {!image01 && !image02

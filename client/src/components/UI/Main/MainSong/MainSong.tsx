@@ -4,12 +4,14 @@ import cn from 'classnames';
 import { useActions } from "../../../../hooks/useActions";
 import { useTypedSelector } from "../../../../hooks/useTypedSelector";
 
+import { API_URL } from "../../../../http";
+
 import { MainSongProps } from "./MainSong.types";
 import { ISong } from "../../../../redux/reducers/Song/SongReducer.types";
 
 import styles from './MainSong.module.scss';
 
-import heartImg from '../../../../assets/img/Main/heart.svg';
+import heartImg from '../../../../assets/img//heart.svg';
 
 const MainSong: FC<MainSongProps> = ({_id,
                                       title, 
@@ -47,7 +49,7 @@ const MainSong: FC<MainSongProps> = ({_id,
          {...props}>
              <div className={styles.Image}>
                  <img
-                  src={`http://localhost:8000/img/${img}`} />
+                  src={`${API_URL}/img/${img}`} />
             </div>
              <div className={styles.BlockText}>
                 <div className={styles.Title}>{title}</div>

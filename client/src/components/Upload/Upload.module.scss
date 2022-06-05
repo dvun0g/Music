@@ -100,6 +100,7 @@
         align-content: space-between;
         margin-bottom: 50px;
         .BlockText {
+            margin-bottom: 30px;
             .Title {
                 text-align: center;
                 font-size: 30px;
@@ -111,9 +112,47 @@
             }
         }
         .BlockInput {
+            margin-top: 30px;
             .Btn {
                 font-size: 22px;
                 padding: 18px 25px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .Container {
+        gap: 30px 0;
+        .BlockText {
+            margin-bottom: 0px;
+        }
+        .BlockInput {
+            margin-top: 0px;
+        }
+        .BlockFile {
+            grid-auto-flow: row;
+            gap: 30px;
+        }       
+    }
+}
+
+@media (max-width: 575.98px) {
+    .Container {
+        .BlockText {
+            .Title {
+                font-size: 25px;
+                line-height: 27px;
+            }
+            .Descr {
+                font-size: 18px;
+                line-height: 20px;
+            }
+        }
+        .BlockInput {
+            .Btn {
+                font-size: 18px;
+                padding: 15px 20px;
             }
         }
     }

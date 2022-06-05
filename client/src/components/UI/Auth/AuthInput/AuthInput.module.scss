@@ -27,3 +27,12 @@
         border: 1px solid $color-azure;
     }
 }
+
+@media (max-width: 575.98px) {
+    .Container {
+        input {
+            width: 100%;
+            margin: 5px 0;
+        }
+    }
+}

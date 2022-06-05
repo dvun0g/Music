@@ -2,7 +2,6 @@ export interface AudioStateTypes {
     duration: number,
     currentTime: number,
     volume: number,
-    activeTrack: string | null,
     play: boolean,
 }
 

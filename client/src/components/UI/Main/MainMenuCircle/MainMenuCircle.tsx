@@ -9,9 +9,11 @@ import styles from './MainMenuCircle.module.scss'
 
 const MainMenuCircle: FC<MainMenuCircleProps> = ({color, className, ...props}) => {
     const {themeChange} = useActions()
+    
     const handleColor = () => {
         themeChange(color)
     }
+    
     return (
         <button 
          className={cn(className, styles.Container, {

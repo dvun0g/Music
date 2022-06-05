@@ -9,7 +9,7 @@ export interface ISong {
 
 export interface SongStateTypes {
     loading: boolean,
-    error: string | null,
+    error: unknown | string,
     songs: ISong[],
     wishlist: ISong[],
     activeSong: ISong | null,
@@ -34,7 +34,7 @@ export interface SongFetchSuccessAction {
 
 export interface SongFetchErrorAction {
     type: SongActionTypes.SONG_FETCH_ERROR,
-    payload: string
+    payload: unknown
 }
 
 export interface SongSetActive {

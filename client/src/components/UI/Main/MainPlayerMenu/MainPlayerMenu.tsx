@@ -11,19 +11,22 @@ import { MainPlayerMenuProps } from "./MainPlayerMenu.types";
 
 import styles from './MainPlayerMenu.module.scss';
 
-import previous from '../../../../assets/img/Main/previous.svg';
-import next from '../../../../assets/img/Main/next.svg';
-import playImg from '../../../../assets/img/Main/play.svg';
-import pauseImg from '../../../../assets/img/Main/pause.svg';
-import volumeDown from '../../../../assets/img/Main/volumeDown.svg';
-import volumeUp from '../../../../assets/img/Main/volumeUp.svg';
+import previous from '../../../../assets/img//previous.svg';
+import next from '../../../../assets/img//next.svg';
+import playImg from '../../../../assets/img//play.svg';
+import pauseImg from '../../../../assets/img//pause.svg';
+import volumeDown from '../../../../assets/img//volumeDown.svg';
+import volumeUp from '../../../../assets/img//volumeUp.svg';
 
 let audio: HTMLAudioElement
 
 const MainPlayerMenu: FC<MainPlayerMenuProps> = ({className, ...props}) => {
 
     const {activeSong, songs} = useTypedSelector(state => state.song)
-    const {play, volume, duration, currentTime} = useTypedSelector(state => state.audio)    
+    const {play, 
+           volume, 
+           duration, 
+           currentTime} = useTypedSelector(state => state.audio)    
     
     const {audioPlay, 
            audioPause, 
@@ -115,19 +118,19 @@ const MainPlayerMenu: FC<MainPlayerMenuProps> = ({className, ...props}) => {
                      onClick={() => handleNextSong('n')}/>
                 </div>
                 <MainPlayerProgress 
-                    left={volume} 
-                    rigth={100} 
-                    image01={volumeDown} 
-                    image02={volumeUp}
-                    disabled={!activeSong ? true : false}
-                    onChange={handleVolume} 
-                    value={volume}/>
+                 left={volume} 
+                 rigth={100} 
+                 image01={volumeDown} 
+                 image02={volumeUp}
+                 disabled={!activeSong ? true : false}
+                 onChange={handleVolume} 
+                 value={volume}/>
                 <MainPlayerProgress 
-                    left={currentTime} 
-                    rigth={duration} 
-                    disabled={!activeSong ? true : false}
-                    onChange={handleCurrentTime} 
-                    value={currentTime}/>
+                 left={currentTime} 
+                 rigth={duration} 
+                 disabled={!activeSong ? true : false}
+                 onChange={handleCurrentTime} 
+                 value={currentTime}/>
         </div>
     )
 }

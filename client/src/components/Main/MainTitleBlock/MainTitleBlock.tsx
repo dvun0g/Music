@@ -2,8 +2,8 @@ import { FC } from "react";
 
 import styles from './MainTitleBlock.module.scss';
 
-import github from '../../../assets/img/Main/github.svg';
-import telegram from '../../../assets/img/Main/telegram.svg';
+import github from '../../../assets/img//github.svg';
+import telegram from '../../../assets/img//telegram.svg';
 
 const MainTitleBlock: FC = () => {
     return (
@@ -15,11 +15,11 @@ const MainTitleBlock: FC = () => {
             <div className={styles.Block}>
                 <div className={styles.Title}>Our Contacts</div>
                 <div className={styles.BlockImage}>
-                    <img src={github} alt="" />
-                    <img src={github} alt="" />
-                    <img src={github} alt="" />
-                    <img src={github} alt="" />
-                    <img src={telegram} alt="" />
+                    <img src={github} alt="Github Icon" />
+                    <img src={github} alt="Github Icon" />
+                    <img src={github} alt="Github Icon" />
+                    <img src={github} alt="Github Icon" />
+                    <img src={telegram} alt="Telegram Icon" />
                 </div>
             </div>
         </div>

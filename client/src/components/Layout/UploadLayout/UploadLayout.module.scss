@@ -23,3 +23,22 @@
 .Vinous {
     background: $bg-vinous;
 }
+@media (max-width: 991.98px) {
+    .Container {
+        height: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .Container {
+        padding: 40px;
+        gap: 0 20px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .Container {
+        gap: 0;
+        grid-template-columns: 1fr;
+    }
+}

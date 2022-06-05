@@ -13,7 +13,7 @@ import { MainLayoutProps } from "./MainLayout.types";
 import styles from './MainLayout.module.scss';
 
 const MainLayout: FC<MainLayoutProps> = ({children}) => {
-    const {color} = useTypedSelector(state => state.theme)
+    const {color} = useTypedSelector(state => state.common)
     const {themeChange} = useActions()
 
     useEffect(() => {

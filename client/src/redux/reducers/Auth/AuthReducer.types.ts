@@ -1,6 +1,6 @@
 export interface AuthStateTypes {
     loading: boolean,
-    error: null | string,
+    error: unknown | string,
     isAuth: boolean,
     user: IUser,
 }
@@ -29,7 +29,7 @@ export interface AuthFetchSuccessAction {
 
 export interface AuthFetchErrorAction {
     type: AuthActionTypes.AUTH_FETCH_ERROR,
-    payload: string,
+    payload: unknown,
 }
 
 export interface AuthLogout {

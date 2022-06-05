@@ -52,3 +52,20 @@
 .Active {
     visibility: visible;
 }
+
+@media (max-width: 991.98px) {
+    .Container {
+        .Content {
+            width: 400px;
+            height: 200px;
+
+            .Title {
+                font-size: 25px;
+
+                .Btn {
+                    font-size: 40px;
+                }
+            }
+        }
+    }
+}

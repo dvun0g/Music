@@ -1,6 +1,6 @@
 @import '../../../../styles/variables.scss';
 
-.Button {
+.Container {
     cursor: auto;
     font-size: 20px;
     line-height: 24px;
@@ -24,4 +24,12 @@
     cursor: pointer;
     opacity: 1;
     transform: scale(1.05);
+}
+
+@media (max-width: 575.98px) {
+    .Container {
+        padding: 15px 30px;
+        margin: auto 0;
+        max-height: 70px;
+    }
 }

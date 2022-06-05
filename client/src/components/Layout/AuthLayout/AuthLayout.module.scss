@@ -7,3 +7,10 @@
     justify-content: center;
     align-content: center;
 }
+
+@media (max-width: 575.98px) {
+    .Container {
+        height: 100%;
+        min-height: 100vh;
+    }
+}

@@ -12,7 +12,7 @@ import { UploadLayoutProps } from "./UploadLayout.types";
 import styles from './UploadLayout.module.scss';
 
 const UploadLayout: FC<UploadLayoutProps> = ({children}) => {
-    const {color} = useTypedSelector(state => state.theme)
+    const {color} = useTypedSelector(state => state.common)
     const {themeChange} = useActions()
 
     useEffect(() => {

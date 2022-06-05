@@ -2,7 +2,6 @@ import { AudioStateTypes, AudioAction, AudioActionTypes } from './AudioReducer.t
 
 const initialState: AudioStateTypes = {
     play: false,
-    activeTrack: null,
     duration: 0,
     currentTime: 0,
     volume: 50,

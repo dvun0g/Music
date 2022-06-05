@@ -5,7 +5,10 @@ import { AuthTitleProps } from './AuthTitle.types';
 
 import styles from './AuthTitle.module.scss';
 
-const AuthTitle: FC<AuthTitleProps> = ({color = 'w', text, className, ...props}) => {
+const AuthTitle: FC<AuthTitleProps> = ({color = 'w', 
+                                        text, 
+                                        className, 
+                                        ...props}) => {
     return (
         <button 
          className={cn(styles.Button, className, {

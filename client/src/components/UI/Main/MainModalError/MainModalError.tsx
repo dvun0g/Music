@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent } from "react";
+import { FC } from "react";
 import cn from 'classnames';
 
 import { MainModalErrorProps } from "./MainModalError.types";

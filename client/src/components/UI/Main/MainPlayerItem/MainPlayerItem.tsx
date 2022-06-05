@@ -25,7 +25,11 @@ const MainPlayerItem: FC<MainPlayerItemProps> = ({color='w',
          })} 
          disabled={disabled}
          {...props}>
-            <img src={img} width={size === 's' ? 20 : 30} height={size === 's' ? 20 : 30}/> 
+            <img 
+             src={img} 
+             width={size === 's' ? 20 : 30} 
+             height={size === 's' ? 20 : 30} 
+             alt="Player Icon"/> 
         </button>
     )
 }

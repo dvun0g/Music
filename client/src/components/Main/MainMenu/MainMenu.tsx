@@ -10,14 +10,17 @@ import MainMenuCircle from "../../UI/Main/MainMenuCircle/MainMenuCircle";
 
 import styles from './MainMenu.module.scss';
 
-import heart from '../../../assets/img/Main/heart.svg';
-import upload from '../../../assets/img/Main/upload.svg';
-import close from '../../../assets/img/Main/close.svg';
+import heart from '../../../assets/img//heart.svg';
+import upload from '../../../assets/img//upload.svg';
+import close from '../../../assets/img//close.svg';
 
 const MainMenu: FC = () => {
     const {wishlist} = useTypedSelector(state => state.song)
-    const {activeMenu} = useTypedSelector(state => state.theme)
-    const {songAddWishlist, songDelWishlist, songRemoveActive, activeMenuChange} = useActions()
+    const {activeMenu} = useTypedSelector(state => state.common)
+    const {songAddWishlist, 
+           songDelWishlist, 
+           songRemoveActive, 
+           activeMenuChange} = useActions()
     
     const navigate = useNavigate()
 
@@ -50,12 +53,12 @@ const MainMenu: FC = () => {
                  icon={heart} 
                  text="Wishlist"
                  color={wishlist.length ? 'r' : 'b'} 
-                 href="/"
+                 href=" "
                  onClick={handlerWishlist}/>
                 <MainMenuLink 
                  icon={upload} 
                  text="Upload" 
-                 href="/"
+                 href=" "
                  onClick={handlerUpload}/>
             </div>
             <div className={styles.BlockCircle}>

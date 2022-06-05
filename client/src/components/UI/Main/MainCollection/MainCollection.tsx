@@ -5,7 +5,10 @@ import { MainCollectionProps } from "./MainCollection.types";
 
 import styles from './MainCollection.module.scss';
 
-const MainCollection: FC<MainCollectionProps> = ({title, tags, className, ...props}) => {
+const MainCollection: FC<MainCollectionProps> = ({title, 
+                                                  tags, 
+                                                  className, 
+                                                  ...props}) => {
     return (
         <button 
          className={cn(className, styles.Container)} 

@@ -12,7 +12,7 @@ const AuthButton: FC<AuthButtonProps> = ({text,
                                           ...props}) => {
     return (
         <button 
-         className={cn(className, styles.Button, {
+         className={cn(className, styles.Container, {
              [styles.Disabled]: disabled,
              [styles.Hover]: !disabled,
          })}

@@ -6,11 +6,13 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 import styles from './Header.module.scss';
 
-import menu from '../../assets/img/Main/menu.svg';
+import menu from '../../assets/img/menu.svg';
 
 const Header: FC = () => {
     const {user} = useTypedSelector(state => state.auth)
-    const {authLogout, songRemoveActive, activeMenuChange} = useActions()
+    const {authLogout, 
+           songRemoveActive, 
+           activeMenuChange} = useActions()
 
     const handleLogout = () => {
         songRemoveActive()
@@ -27,12 +29,16 @@ const Header: FC = () => {
             <button 
              className={styles.Menu}
              onClick={handleMenu}>
-                <img src={menu} alt="" />
+                <img src={menu} alt="Menu Icon" />
             </button>
             <div className={styles.Account}>
                 <button className={styles.Btn}>👾</button>
                 <div className={styles.Name}>{user.name}</div>
-                <button onClick={handleLogout} className={styles.Logout}>Logout</button>
+                <button 
+                 onClick={handleLogout} 
+                 className={styles.Logout}>
+                    Logout
+                </button>
             </div>
         </div>
     )

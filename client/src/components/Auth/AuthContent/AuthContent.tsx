@@ -85,7 +85,7 @@ const AuthContent: FC = () => {
                                             && <div className={styles.Error}>Incorrect email</div>}
                        
                         <AuthInput 
-                         placeholder="Введите вашу почту" 
+                         placeholder="Enter your email" 
                          type="text"
                          value={emailLogin.value}
                          onChange={emailLogin.onChange}
@@ -97,7 +97,7 @@ const AuthContent: FC = () => {
                                                && <div className={styles.Error}>The minimum field length is 5</div>}
                         
                         <AuthInput 
-                         placeholder="Введите пароль 🤫" 
+                         placeholder="Enter password 🤫" 
                          type="password"
                          value={passwordLogin.value}
                          onChange={passwordLogin.onChange}
@@ -112,7 +112,7 @@ const AuthContent: FC = () => {
                                                   && <div className={styles.Error}>The minimum field length is 3</div>}
                        
                         <AuthInput 
-                         placeholder="Введите ваш никнейм" 
+                         placeholder="Create a nickname" 
                          type="text"
                          value={nameRegistration.value}
                          onBlur={nameRegistration.onBlur}
@@ -126,7 +126,7 @@ const AuthContent: FC = () => {
                                                    && <div className={styles.Error}>Incorrect email</div>}
                          
                         <AuthInput 
-                         placeholder="Введите вашу почту" 
+                         placeholder="Create a mail" 
                          type="text"
                          value={emailRegistration.value}
                          onBlur={emailRegistration.onBlur}
@@ -138,7 +138,7 @@ const AuthContent: FC = () => {
                                                       && <div className={styles.Error}>The minimum field length is 5</div>}
                         
                         <AuthInput 
-                         placeholder="Придумайте пароль 🤫" 
+                         placeholder="Create a password 🤫" 
                          type="password"
                          value={passwordRegistration.value}
                          onBlur={passwordRegistration.onBlur}
@@ -149,6 +149,7 @@ const AuthContent: FC = () => {
                 }
             </div>
             <AuthButton 
+             className={styles.Btn}
              disabled={login 
                     ? !emailLogin.isValidInput || !passwordLogin.isValidInput 
                     : !nameRegistration.isValidInput || !emailRegistration.isValidInput || !passwordRegistration.isValidInput}

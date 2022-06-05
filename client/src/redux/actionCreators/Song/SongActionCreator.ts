@@ -1,34 +1,36 @@
 import { Dispatch } from "redux";
 import axios, { AxiosResponse } from 'axios';
 
-import { ISong, SongActionTypes } from '../../reducers/Song/SongReducer.types';
+import { API_URL } from './../../../http/index';
+
+import { ISong, SongAction, SongActionTypes } from '../../reducers/Song/SongReducer.types';
 
 
-export const songFetch = () => async (dispatch: Dispatch) => {
+export const songFetch = () => async (dispatch: Dispatch<SongAction>) => {
     try {
         dispatch({type: SongActionTypes.SONG_FETCH})
-        const response = await axios.get('http://localhost:8000/music')
+        const response = await axios.get(`${API_URL}/music`)
         dispatch({type: SongActionTypes.SONG_FETCH_SUCCESS, payload: response.data})
     } catch (e) {
         dispatch({type: SongActionTypes.SONG_FETCH_ERROR, payload: e})
     }
 }
 
-export const songSetActive = (id: string) => async (dispatch: Dispatch) => {
+export const songSetActive = (id: string) => async (dispatch: Dispatch<SongAction>) => {
     try {
         dispatch({type: SongActionTypes.SONG_FETCH})
-        const response = await axios.get(`http://localhost:8000/music/${id}`)
+        const response = await axios.get(`${API_URL}/music/${id}`)
         dispatch({type: SongActionTypes.SONG_SET_ACTIVE, payload: response.data})
     } catch (e) {
         dispatch({type: SongActionTypes.SONG_FETCH_ERROR, payload: e})
     }
 } 
 
-export const songRemoveActive = () => (dispatch: Dispatch) => {
+export const songRemoveActive = () => (dispatch: Dispatch<SongAction>) => {
     dispatch({type: SongActionTypes.SONG_SET_ACTIVE, payload: null})
 }
 
-export const songSetNext = (songs: ISong[], activeSong: ISong, type: 'n' | 'p') => (dispatch: Dispatch) => {
+export const songSetNext = (songs: ISong[], activeSong: ISong, type: 'n' | 'p') => (dispatch: Dispatch<SongAction>) => {
     const length = songs.length
     const index = songs.findIndex(song => song._id === activeSong._id)
     switch (type) {
@@ -57,31 +59,31 @@ export const songSetNext = (songs: ISong[], activeSong: ISong, type: 'n' | 'p') 
     }
 }   
 
-export const songCreate = (song: FormData) => async (dispatch: Dispatch) => {
+export const songCreate = (song: FormData) => async (dispatch: Dispatch<SongAction>) => {
     try {
-        await axios.post('http://localhost:8000/music', song)
+        await axios.post(`${API_URL}/music`, song)
         dispatch({type: SongActionTypes.SONG_FETCH})
-        const response = await axios.get('http://localhost:8000/music')
+        const response = await axios.get(`${API_URL}/music`)
         dispatch({type: SongActionTypes.SONG_FETCH_SUCCESS, payload: response.data})
     } catch (e) {
         dispatch({type: SongActionTypes.SONG_FETCH_ERROR, payload: e})
     }
 }
 
-export const songUpdate = (song: ISong) => async (dispatch: Dispatch) => {
+export const songUpdate = (song: ISong) => async (dispatch: Dispatch<SongAction>) => {
     try {
-        await axios.put(`http://localhost:8000/music/${song._id}`, song)
-        const response = await axios.get('http://localhost:8000/music')
+        await axios.put(`${API_URL}/music/${song._id}`, song)
+        const response = await axios.get(`${API_URL}/music`)
         dispatch({type: SongActionTypes.SONG_FETCH_SUCCESS, payload: response.data})
     } catch (e) {
         dispatch({type: SongActionTypes.SONG_FETCH_ERROR, payload: e})
     }
 }
 
-export const songAddWishlist = () => async (dispatch: Dispatch) => {
+export const songAddWishlist = () => async (dispatch: Dispatch<SongAction>) => {
     try {
         dispatch({type: SongActionTypes.SONG_FETCH})
-        const response: AxiosResponse<ISong[]> = await axios.get('http://localhost:8000/music')
+        const response: AxiosResponse<ISong[]> = await axios.get(`${API_URL}/music`)
         const songsWishlist = response.data.filter(i => i.wishlist)
         console.log(songsWishlist)
         dispatch({type: SongActionTypes.SONG_SET_WISHLIST, payload: songsWishlist})
@@ -90,6 +92,6 @@ export const songAddWishlist = () => async (dispatch: Dispatch) => {
     }
 }
 
-export const songDelWishlist = () => (dispatch: Dispatch) => {
+export const songDelWishlist = () => (dispatch: Dispatch<SongAction>) => {
     dispatch({type: SongActionTypes.SONG_SET_WISHLIST, payload: []})
 }

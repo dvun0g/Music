@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 
 import MainCollection from "../../UI/Main/MainCollection/MainCollection";
 import MainModalError from "../../UI/Main/MainModalError/MainModalError";
-
 import MainPlayerMenu from "../../UI/Main/MainPlayerMenu/MainPlayerMenu";
 import MainTitleBlock from "../MainTitleBlock/MainTitleBlock";
 
